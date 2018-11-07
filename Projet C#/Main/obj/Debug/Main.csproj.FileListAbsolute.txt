@@ -12,3 +12,4 @@ C:\Users\VmWin\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.exe
 C:\Users\VmWin\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.pdb
 C:\Users\VmWin\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.MainForm.resources
 C:\Users\VmWin\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.csproj.GenerateResource.Cache
+C:\Users\VmWin\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.Supervision.resources

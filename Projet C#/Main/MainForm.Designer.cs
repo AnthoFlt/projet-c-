@@ -54,14 +54,14 @@ namespace Main
 			// 
 			this.tbEmail.Location = new System.Drawing.Point(27, 74);
 			this.tbEmail.Name = "tbEmail";
-			this.tbEmail.Size = new System.Drawing.Size(145, 20);
+			this.tbEmail.Size = new System.Drawing.Size(158, 20);
 			this.tbEmail.TabIndex = 0;
 			this.tbEmail.Text = "Rentrez votre e-mail";
 			// 
 			// lbInfo
 			// 
 			this.lbInfo.FormattingEnabled = true;
-			this.lbInfo.Location = new System.Drawing.Point(218, 74);
+			this.lbInfo.Location = new System.Drawing.Point(225, 74);
 			this.lbInfo.Name = "lbInfo";
 			this.lbInfo.Size = new System.Drawing.Size(163, 199);
 			this.lbInfo.TabIndex = 1;
@@ -82,7 +82,7 @@ namespace Main
 			this.cbInterface.FormattingEnabled = true;
 			this.cbInterface.Location = new System.Drawing.Point(27, 118);
 			this.cbInterface.Name = "cbInterface";
-			this.cbInterface.Size = new System.Drawing.Size(144, 21);
+			this.cbInterface.Size = new System.Drawing.Size(157, 21);
 			this.cbInterface.TabIndex = 3;
 			this.cbInterface.Text = "Choississez une interface";
 			// 
@@ -91,12 +91,12 @@ namespace Main
 			this.lbProtection.FormattingEnabled = true;
 			this.lbProtection.Location = new System.Drawing.Point(27, 178);
 			this.lbProtection.Name = "lbProtection";
-			this.lbProtection.Size = new System.Drawing.Size(145, 95);
+			this.lbProtection.Size = new System.Drawing.Size(158, 95);
 			this.lbProtection.TabIndex = 4;
 			// 
 			// btActiver
 			// 
-			this.btActiver.Location = new System.Drawing.Point(175, 296);
+			this.btActiver.Location = new System.Drawing.Point(195, 299);
 			this.btActiver.Name = "btActiver";
 			this.btActiver.Size = new System.Drawing.Size(206, 33);
 			this.btActiver.TabIndex = 5;
