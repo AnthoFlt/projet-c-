@@ -11,7 +11,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
+
 
 namespace Main
 {
@@ -27,16 +27,17 @@ namespace Main
 			//
 			InitializeComponent();
 			
-			string[] allLinesPro = File.ReadAllLines(@"lbProtection.txt"); // reads all lines from text file
+			string[] allLinesPro = File.ReadAllLines(@"Infos/lbProtection.txt"); // reads all lines from text file
 			lbProtection.Items.AddRange(allLinesPro);
 			
-			string[] allLinesInfo = File.ReadAllLines(@"lbInfo.txt"); // reads all lines from text file
+			string[] allLinesInfo = File.ReadAllLines(@"Infos/lbInfo.txt"); // reads all lines from text file
 			lbInfo.Items.AddRange(allLinesInfo);
 			
 			ShellConsole shell = new ShellConsole();
 			shell.getDevice();
 			
 			getDevice();
+			System.Threading.Thread.Sleep(1000);
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
@@ -49,6 +50,10 @@ namespace Main
 			device++;
 			
 			initComput(device);
+			ShellConsole shell = new ShellConsole();
+			shell.scan("192.168.1");
+		
+			System.Threading.Thread.Sleep(2000);
 			
 			//lbProtection.Items.Add(computer.getMail());
 			//lbProtection.Items.Add(device);
@@ -59,8 +64,10 @@ namespace Main
 			
 		}
 		
+		
+		
 		public void getDevice(){
-			string[] allLinesDevice = File.ReadAllLines(@"devices.txt");
+			string[] allLinesDevice = File.ReadAllLines(@"Infos/devices.txt");
 			foreach(string line in allLinesDevice){
 				string[] newline = line.Split('}');
 				cbInterface.Items.Add(newline[1]);

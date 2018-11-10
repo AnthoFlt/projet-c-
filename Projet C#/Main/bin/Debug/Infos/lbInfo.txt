@@ -1,0 +1,12 @@
+Information sur l'application
+
+Version: 0.02
+
+Nouveautes:
+- alerte envoye par mail
+- interfaces des cartes 
+repertories
+- interface d'accueil
+
+Pour tout aide: 
+opsieAppliC#@gmail.com

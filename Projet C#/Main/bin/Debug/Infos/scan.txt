@@ -1,0 +1,29 @@
+Nmap scan report for box (192.168.1.1)
+E4:5D:51:1F:1D:70
+Nmap scan report for ESP_865812 (192.168.1.27)
+DC:4F:22:86:58:12
+Nmap scan report for STB (192.168.1.31)
+MAC Address: E4:5D:51:0F:5D:E0 (SFR)
+Nmap scan report for amazon-1a1087fa0 (192.168.1.32)
+MAC Address: 00:71:47:15:7D:4F (Unknown)
+Nmap scan report for ESP_86565A (192.168.1.38)
+MAC Address: DC:4F:22:86:56:5A (Espressif)
+Nmap scan report for amazon-82ca0e033 (192.168.1.39)
+MAC Address: 00:71:47:90:2E:76 (Unknown)
+Nmap scan report for amazon-18ac20938 (192.168.1.50)
+MAC Address: 44:00:49:44:95:A0 (Unknown)
+Nmap scan report for stop-scans (192.168.1.54)
+MAC Address: E4:A7:A0:4B:90:A6 (Intel Corporate)
+Nmap scan report for 192.168.1.59
+MAC Address: 60:6B:FF:C1:32:DB (Unknown)
+Nmap scan report for HUAWEI_Mate_9-d12703c02ab (192.168.1.78)
+MAC Address: 88:44:77:11:27:22 (Huawei Technologies)
+Nmap scan report for TV-IP862IC (192.168.1.87)
+MAC Address: D8:EB:97:D7:A1:E7 (Trendnet)
+Nmap scan report for SonosZP (192.168.1.98)
+MAC Address: 94:9F:3E:D6:7B:10 (Sonos)
+Nmap scan report for 192.168.1.250
+MAC Address: 34:97:F6:B6:ED:20 (Asustek Computer)
+Nmap scan report for 192.168.1.251
+MAC Address: 34:97:F6:B6:EC:C7 (Asustek Computer)
+

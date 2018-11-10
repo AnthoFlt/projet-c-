@@ -55,6 +55,7 @@
     <Compile Include="Classes\Attacker.cs" />
     <Compile Include="Classes\Computer.cs" />
     <Compile Include="Classes\DOS.cs" />
+    <Compile Include="Classes\Mapping.cs" />
     <Compile Include="Classes\ShellConsole.cs" />
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">

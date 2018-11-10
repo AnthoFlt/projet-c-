@@ -27,27 +27,29 @@ namespace Main
 			process = new Process();
 	        process.StartInfo.FileName = "cmd.exe";
 	        process.StartInfo.RedirectStandardInput = false;
-	        process.StartInfo.UseShellExecute = false;
+	        process.StartInfo.UseShellExecute = true;
 	        return process;
 		}
 		
-		public void getArpByIp(string ip){ // Récupère la résolution ARP d'une adresse et la place dans un fichier text
-			process.StartInfo.Arguments= "/C arp -a | findstr " +ip+ " >> arpTab.txt";
+		
+		
+		public void scan(string res){ // Récupère la résolution ARP d'une adresse et la place dans un fichier text
+			process.StartInfo.Arguments= "/C nmap -sn " +res+ ".0/24 | findstr \"MAC "+res+ "\" >> Infos/scan.txt";
 			process.Start();
 		}
 		
 		public void clearArpTab(){ // efface le fichier arp
-			process.StartInfo.Arguments= "/C del arpTab.txt";
+			process.StartInfo.Arguments= "/C del Infos/arpTab.txt";
 			process.Start();
 		}
 		
 		public void getDevice(){ // Récupère les interfaces de la machine
-			process.StartInfo.Arguments= "/C WinDump -D > devices.txt";
+			process.StartInfo.Arguments= "/C WinDump -D > Infos/devices.txt";
 			process.Start();
 		}
 		
 		public void getIpMac(){ // Récupére l'adresse ip, mac et le nom de la carte
-			process.StartInfo.Arguments= "/C ipconfig -all | findstr /i \"ipv4 description physi\" > infoIpMac.txt";
+			process.StartInfo.Arguments= "/C ipconfig -all | findstr /i \"ipv4 description physi\" > Infos/infoIpMac.txt";
 			process.Start();
 		}
 		
