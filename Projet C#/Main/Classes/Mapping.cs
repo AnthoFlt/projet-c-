@@ -96,20 +96,23 @@ namespace Main
 				}
 			}
 			
-			for(int i = 0; i<numberLine(@"Infos/scanForm.txt")-1; i=i+2){ // A partir du fichier de scan
+			for(int i = 0; i<(numberLine(@"Infos/scanForm.txt")/2); i=i+2){ // A partir du fichier de scan
 				
 				if(lIps==null || !lIps.Contains(lines[i])){ // On verifie si la list ne contient pas l'adresse ip
 					lIps.Add(lines[i]); // Si c'est vrai on ajoute l'ip dans la liste
-					LMacs.Add(lines[i+1]); // Ainsi que la mac
+					//LMacs.Add(lines[i+1]); // Ainsi que la mac
 				}
 				
-				/*if(lIps.Contains(lines[i])){ // Si on à bien une adresse ip
+				if(lIps.Contains(lines[i])){ // Si on à bien une adresse ip
 					int binari = lIps.BinarySearch(lines[i]); //On récupère son index
-					
-					if(LMacs.ElementAt(binari)!=lines[i+1]){ //On vérifie que la mac de cette ip est toujours la même
-						LMacs[binari]=lines[i+1]; //Sinon on la remplace
+					if(!LMacs.Exists(x => x.Contains(LMacs[binari]))){
+						//LMacs.Add(lines[i+1]);
 					}
-				}*/
+					/*if(LMacs.ElementAt(binari)!=lines[i+1]){ //On vérifie que la mac de cette ip est toujours la même
+						//LMacs.ElementAt(binari).Replace(LMacs[binari],lines[i+1]); //Sinon on la remplace
+						//LMacs[binari]=lines[i+1];
+					}*/
+				}
 			}
 			
 			StreamWriter wrIp = new StreamWriter(@"Infos/testIp.txt");

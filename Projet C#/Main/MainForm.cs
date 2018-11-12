@@ -20,6 +20,9 @@ namespace Main
 	/// </summary>
 	public partial class MainForm : Form
 	{
+		Computer computer;
+		ShellConsole shell = new ShellConsole();
+		
 		public MainForm()
 		{
 			//
@@ -33,15 +36,15 @@ namespace Main
 			string[] allLinesInfo = File.ReadAllLines(@"Infos/lbInfo.txt"); // reads all lines from text file
 			lbInfo.Items.AddRange(allLinesInfo);
 			
-			ShellConsole shell = new ShellConsole();
+			
 			shell.getDevice();
 			
 			getDevice();
 			System.Threading.Thread.Sleep(1000);
-			shell.getIpMac();
+			//shell.getIpMac();
 			System.Threading.Thread.Sleep(1000);
-			shell.clearTxt("scan.txt");
-			shell.clearTxt("scanForm.txt");
+			//shell.clearTxt("scan.txt");
+			//shell.clearTxt("scanForm.txt");
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
@@ -54,13 +57,12 @@ namespace Main
 			device++;
 			
 			initComput(device);
-		
-			ShellConsole shell = new ShellConsole();
-			shell.scan("159.84.146");
-			System.Threading.Thread.Sleep(5000);
+			
+		//	shell.scan("159.84.146");
+		//	System.Threading.Thread.Sleep(5000);
 			
 			Mapping mapping = new Mapping();
-			mapping.formatScan();
+			//mapping.formatScan();
 			
 			System.Threading.Thread.Sleep(1000);
 			
@@ -85,7 +87,8 @@ namespace Main
 		}
 
 		public void initComput(int device){
-			Computer computer = new Computer(device,tbEmail.Text);
+			computer = new Computer(device,tbEmail.Text);
 		}
+		
 	}
 }
