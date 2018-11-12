@@ -1,4 +1,0 @@
-Nmap scan report for 159.84.146.1
-MAC Address: 00:00:0C:07:AC:AC (Cisco Systems)
-Nmap scan report for 159.84.146.2
-MAC Address: 00:2A:6A:F1:EC:FC (Cisco Systems)

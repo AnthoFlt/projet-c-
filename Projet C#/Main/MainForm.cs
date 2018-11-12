@@ -20,8 +20,8 @@ namespace Main
 	/// </summary>
 	public partial class MainForm : Form
 	{
-		Computer computer;
-		ShellConsole shell = new ShellConsole();
+		public Computer computer;
+		public ShellConsole shell = new ShellConsole();
 		
 		public MainForm()
 		{
@@ -38,42 +38,24 @@ namespace Main
 			
 			
 			shell.getDevice();
-			
+			System.Threading.Thread.Sleep(1000);
 			getDevice();
 			System.Threading.Thread.Sleep(1000);
-			//shell.getIpMac();
-			System.Threading.Thread.Sleep(1000);
-			//shell.clearTxt("scan.txt");
-			//shell.clearTxt("scanForm.txt");
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
+			shell.getIpMac();
+			shell.clearTxt("scan.txt");
+			shell.clearTxt("scanForm.txt");
+			
 		}
 		void BtActiverClick(object sender, EventArgs e)
 		{
-			
 			string[] interfa = cbInterface.SelectedIndex.ToString().Split('.');
 			int device = int.Parse(interfa[0]);
 			device++;
 			
 			initComput(device);
 			
-		//	shell.scan("159.84.146");
-		//	System.Threading.Thread.Sleep(5000);
-			
-			Mapping mapping = new Mapping();
-			//mapping.formatScan();
-			
-			System.Threading.Thread.Sleep(1000);
-			
-			mapping.analyseMapping();
-			//lbProtection.Items.Add(computer.getMail());
-			//lbProtection.Items.Add(device);
-		
-			//Supervision form = new Supervision();
-			//form.Show();
-			
-			
+			Supervision sup = new Supervision(this); //Initialisation du second formulaire
+			sup.Show();
 		}
 		
 		
@@ -88,6 +70,10 @@ namespace Main
 
 		public void initComput(int device){
 			computer = new Computer(device,tbEmail.Text);
+		}
+		
+		public MainForm getMainForm(){
+			return this;
 		}
 		
 	}
