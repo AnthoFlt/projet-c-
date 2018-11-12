@@ -31,8 +31,8 @@ namespace Main
 		public void setInterf(int numInterf)
 		{
 			this.interf = numInterf;
-			//this.setIp(numInterf);
-			//this.setMac(numInterf);
+			this.ip = getInfo("ip", numInterf); 
+			this.mac = getInfo("mac", numInterf); 
 		}
 		
 		
