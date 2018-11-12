@@ -38,8 +38,8 @@ namespace Main
 			process.Start();
 		}
 		
-		public void clearArpTab(){ // efface le fichier arp
-			process.StartInfo.Arguments= "/C del Infos/arpTab.txt";
+		public void clearTxt(string file){ // efface le fichier arp
+			process.StartInfo.Arguments= "/C del Infos\\"+file;
 			process.Start();
 		}
 		
@@ -53,7 +53,7 @@ namespace Main
 			process.Start();
 		}
 		
-		public void ActiveSniff(int interfa){ // lance le sniffer en fonction de l'interface choisi
+		public void activeSniff(int interfa){ // lance le sniffer en fonction de l'interface choisi
 			process.StartInfo.Arguments= "/C WinDump -i "+interfa;
 			process.Start();
 		}

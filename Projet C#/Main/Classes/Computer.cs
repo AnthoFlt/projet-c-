@@ -64,7 +64,7 @@ namespace Main
 		{
 			//FilesUpdate();
 			
-	        string[] lines = System.IO.File.ReadAllLines(@"Interfaces.txt");
+	        string[] lines = System.IO.File.ReadAllLines(@"Infos/devices.txt");
 	        /*foreach (string line in lines)
 	        {
 	        	Console.WriteLine(line);
@@ -85,7 +85,7 @@ namespace Main
 	        	nb++;
 	        }
 	        
-	        lines = System.IO.File.ReadAllLines(@"Infos.txt");
+	        lines = System.IO.File.ReadAllLines(@"Infos/infoIpMac.txt");
 	        nb = 1;
 	        String avant = "";
 	        String avantavant = "";

@@ -38,6 +38,10 @@ namespace Main
 			
 			getDevice();
 			System.Threading.Thread.Sleep(1000);
+			shell.getIpMac();
+			System.Threading.Thread.Sleep(1000);
+			shell.clearTxt("scan.txt");
+			shell.clearTxt("scanForm.txt");
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
@@ -50,11 +54,17 @@ namespace Main
 			device++;
 			
 			initComput(device);
-			ShellConsole shell = new ShellConsole();
-			shell.scan("192.168.1");
 		
-			System.Threading.Thread.Sleep(2000);
+			ShellConsole shell = new ShellConsole();
+			shell.scan("159.84.146");
+			System.Threading.Thread.Sleep(5000);
 			
+			Mapping mapping = new Mapping();
+			mapping.formatScan();
+			
+			System.Threading.Thread.Sleep(1000);
+			
+			mapping.analyseMapping();
 			//lbProtection.Items.Add(computer.getMail());
 			//lbProtection.Items.Add(device);
 		
