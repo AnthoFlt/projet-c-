@@ -23,30 +23,31 @@ namespace Main
 		
 		List <string> lIps;
 		List <string> LMacs;
+		Computer computer;
 		string line;
-		
-		public Mapping()
+	
+		public Mapping(Computer computer)
 		{
 			lIps=new List<string>();
 			LMacs=new List<string>();
+			this.computer=computer;
 		}
 		
 		
-		public void formatScan(){
-			int linenumber=numberLine(@"Infos/scan.txt");
+		public void formatScan(string res){
+			int linenumber=numberLine(@"Infos/scan.txt")/2;
 			
 			string[] ips = new string[linenumber];
 			string[] macs= new string[linenumber];
 			int i=0;
 			int j=0;
 			
-			
 			Regex rIp = new Regex(@"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b");
 			
 			StreamReader file = new StreamReader(@"Infos/scan.txt");  
 			while((line = file.ReadLine()) != null)  
 			{  
-				if(line.Contains("159.84.146")){
+				if(line.Contains(res) && !line.Contains(this.computer.getIp())){
 					if(rIp.IsMatch(line)){
 						ips[i] = rIp.Match(line).Groups[0].Value;
 						i++;
@@ -57,6 +58,7 @@ namespace Main
 					macs[j]=line.Substring(13,17);
 					j++;
 				}
+				
 			}  
 			file.Close();  
 			
@@ -96,23 +98,20 @@ namespace Main
 				}
 			}
 			
-			for(int i = 0; i<(numberLine(@"Infos/scanForm.txt")/2); i=i+2){ // A partir du fichier de scan
+			for(int i = 0; i<=(numberLine(@"Infos/scanForm.txt")/2); i=i+2){ // A partir du fichier de scan
 				
 				if(lIps==null || !lIps.Contains(lines[i])){ // On verifie si la list ne contient pas l'adresse ip
 					lIps.Add(lines[i]); // Si c'est vrai on ajoute l'ip dans la liste
-					//LMacs.Add(lines[i+1]); // Ainsi que la mac
+					LMacs.Add(lines[i+1]); // Ainsi que la mac
 				}
-				
+				///////////////////////////////////////////////////////////////////////////////// ne marche pas encore
 				if(lIps.Contains(lines[i])){ // Si on à bien une adresse ip
 					int binari = lIps.BinarySearch(lines[i]); //On récupère son index
-					if(!LMacs.Exists(x => x.Contains(LMacs[binari]))){
-						//LMacs.Add(lines[i+1]);
+					if(LMacs.ElementAt(binari) != lines[i+1]){
+						LMacs.ElementAt(binari).Replace(LMacs.ElementAt(binari),lines[i+1]);
 					}
-					/*if(LMacs.ElementAt(binari)!=lines[i+1]){ //On vérifie que la mac de cette ip est toujours la même
-						//LMacs.ElementAt(binari).Replace(LMacs[binari],lines[i+1]); //Sinon on la remplace
-						//LMacs[binari]=lines[i+1];
-					}*/
 				}
+				///////////////////////////////////////////////////////////////////////////////
 			}
 			
 			StreamWriter wrIp = new StreamWriter(@"Infos/testIp.txt");

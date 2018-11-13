@@ -18,22 +18,35 @@ namespace Main
 	public partial class Supervision : Form
 	{
 		MainForm mainform;
+		Mapping mapping;
 		public Supervision(MainForm mainform)
 		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
 			InitializeComponent();
 			this.mainform=mainform;
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
 			
+			mapping = new Mapping(this.mainform.computer);
 		
-			label1.Text=this.mainform.computer.getIp();
+			while(true){
+				this.mainform.shell.clearTxt("scan.txt");
+				this.mainform.shell.clearTxt("scanForm.txt");
+				System.Threading.Thread.Sleep(1000);
+				scanRes(this.mainform.res);
+				System.Threading.Thread.Sleep(2500);
+				analyseMapping();
+				System.Threading.Thread.Sleep(10000);
+			}
+			
 		}
 		
+		public void scanRes(string res){
+			this.mainform.shell.scan(res);
+			System.Threading.Thread.Sleep(2500);
+			this.mapping.formatScan(res);
+		}
 		
+		public void analyseMapping(){
+			this.mapping.analyseMapping();
+		}
 		
 	}
 }

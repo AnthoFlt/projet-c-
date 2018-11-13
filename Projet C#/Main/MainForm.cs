@@ -22,6 +22,8 @@ namespace Main
 	{
 		public Computer computer;
 		public ShellConsole shell = new ShellConsole();
+		public string ip;
+		public string res;
 		
 		public MainForm()
 		{
@@ -42,8 +44,7 @@ namespace Main
 			getDevice();
 			System.Threading.Thread.Sleep(1000);
 			shell.getIpMac();
-			shell.clearTxt("scan.txt");
-			shell.clearTxt("scanForm.txt");
+
 			
 		}
 		void BtActiverClick(object sender, EventArgs e)
@@ -70,6 +71,8 @@ namespace Main
 
 		public void initComput(int device){
 			computer = new Computer(device,tbEmail.Text);
+			ip = computer.getIp();
+			res = ip.Substring(0,10);
 		}
 		
 		public MainForm getMainForm(){
