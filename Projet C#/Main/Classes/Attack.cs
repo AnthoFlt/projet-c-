@@ -36,9 +36,12 @@ namespace Main
 			string subject="Alert, attack detected !";
 			string body="We notify you that an attack has been detected on your network !";
 			
+			Attachment data = new Attachment("/Infos/report");
 			MailMessage message = new MailMessage(from, to, subject, body);
+			message.Attachments.Add(data);
 			SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-			smtp.Credentials= new System.Net.NetworkCredential("mail", "mdp");
+			
+			smtp.Credentials= new System.Net.NetworkCredential("opsieapplicsharp@gmail.com", "opsie20182019");
 			smtp.EnableSsl=true;
 			
 			try{
