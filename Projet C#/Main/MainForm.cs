@@ -55,8 +55,8 @@ namespace Main
 			
 			initComput(device);
 			
-			Supervision sup = new Supervision(this); //Initialisation du second formulaire
-			sup.Show();
+			//Supervision sup = new Supervision(this); //Initialisation du second formulaire
+			//sup.Show();
 		}
 		
 		
@@ -72,7 +72,10 @@ namespace Main
 		public void initComput(int device){
 			computer = new Computer(device,tbEmail.Text);
 			ip = computer.getIp();
-			res = ip.Substring(0,10);
+			string mac = computer.getMac();
+			string[] ipSplit=ip.Split('.');
+			//res = ipSplit[0]+'.'+ipSplit[1]+'.'+ipSplit[2];
+			//lbProtection.Items.Add(ip);
 		}
 		
 		public MainForm getMainForm(){

@@ -12,7 +12,7 @@ namespace Main
 		private String mac;
 		private String mail;
 		
-		
+		ShellConsole shell = new ShellConsole();
 		public Computer(){}
 
 		
@@ -38,51 +38,30 @@ namespace Main
 		
 		public void FilesUpdate()
 		{
-			Process process = new Process();
-           	ProcessStartInfo info = new ProcessStartInfo();
-	        info.FileName = "cmd.exe";
-	        info.RedirectStandardInput = true;
-	        info.UseShellExecute = false;
-			
-	        process.StartInfo = info;
-	        process.StartInfo.UseShellExecute = false; 
-	        process.Start();
-	        
-	        using (StreamWriter sw = process.StandardInput)
-	        {
-	            if (sw.BaseStream.CanWrite)
-	            {
-	                //sw.WriteLine("ipconfig -all | findstr /i \"ipv4 description physi\" > Infos.txt");
-	                sw.WriteLine("cd ..");
-	                sw.WriteLine("cd ..");
-	                //sw.WriteLine("Windump -D > ./bin/Debug/Interfaces.txt");
-	            }
-	        }
+			//shell.getIpMac();
+			//shell.getDevice();
 		}
 		
 		public String getInfo(String addr, int choix)
 		{
-			//FilesUpdate();
-			
+			FilesUpdate();
+			System.Threading.Thread.Sleep(500);
 	        string[] lines = System.IO.File.ReadAllLines(@"Infos/devices.txt");
-	        /*foreach (string line in lines)
-	        {
-	        	Console.WriteLine(line);
-	        }*/
+	      
 	        
 	        int nb = 1;
 	        string res = "";
 	        foreach (string line in lines)
 	        {
-	        	if(nb == choix)
-	        	{
-	        		string pattern = "(\\((.*?)\\))";
-	        		Match m = Regex.Match(line, pattern);
-	        		res = m.Value;
-	        		res = res.Substring(1, res.Length - 2);
-	        	}
+		        	if(nb == choix)
+		        	{
+		        		string pattern = "(\\((.*?)\\))";
+		        		Match m = Regex.Match(line, pattern);
+		        		res = m.Value;
+		        		res = res.Substring(1, res.Length - 2);
+		        	}
 	        		
-	        	nb++;
+	        		nb++;
 	        }
 	        
 	        lines = System.IO.File.ReadAllLines(@"Infos/infoIpMac.txt");

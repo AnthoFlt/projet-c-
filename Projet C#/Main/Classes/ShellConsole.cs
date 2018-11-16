@@ -28,6 +28,7 @@ namespace Main
 	        process.StartInfo.FileName = "cmd.exe";
 	        process.StartInfo.RedirectStandardInput = false;
 	        process.StartInfo.UseShellExecute = true;
+	        process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 	        return process;
 		}
 		

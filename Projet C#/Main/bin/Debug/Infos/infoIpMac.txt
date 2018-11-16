@@ -1,6 +1,3 @@
-   Description. . . . . . . . . . . . . . : Intel(R) PRO/1000 MT Desktop Adapter
-   Adresse physique . . . . . . . . . . . : 08-00-27-57-69-3F
-   Adresse IPv4. . . . . . . . . . . . . .: 159.84.141.54(pr‚f‚r‚) 
-   Description. . . . . . . . . . . . . . : Npcap Loopback Adapter
-   Adresse physique . . . . . . . . . . . : 02-00-4C-4F-4F-50
-   Adresse d'autoconfiguration IPv4 . . . : 169.254.127.20(pr‚f‚r‚) 
+   Description. . . . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 8260
+   Adresse physique . . . . . . . . . . . : E4-A7-A0-4B-90-A6
+   Adresse IPv4. . . . . . . . . . . . . .: 192.168.1.55
