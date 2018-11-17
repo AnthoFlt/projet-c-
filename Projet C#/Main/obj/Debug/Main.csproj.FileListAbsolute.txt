@@ -16,3 +16,12 @@ C:\Users\VmWin\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.Supervision.res
 C:\Users\magic\Desktop\M2 - OPSIE\Cours\C#\Projet\projet-c-\Projet C#\Main\obj\Debug\Main.MainForm.resources
 C:\Users\magic\Desktop\M2 - OPSIE\Cours\C#\Projet\projet-c-\Projet C#\Main\obj\Debug\Main.Supervision.resources
 C:\Users\magic\Desktop\M2 - OPSIE\Cours\C#\Projet\projet-c-\Projet C#\Main\obj\Debug\Main.csproj.GenerateResource.Cache
+C:\Users\Anthony\Documents\projet-c-\Projet C#\Main\bin\Debug\Main.exe.config
+C:\Users\Anthony\Documents\projet-c-\Projet C#\Main\bin\Debug\Main.exe
+C:\Users\Anthony\Documents\projet-c-\Projet C#\Main\bin\Debug\Main.pdb
+C:\Users\Anthony\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.csprojResolveAssemblyReference.cache
+C:\Users\Anthony\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.MainForm.resources
+C:\Users\Anthony\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.Supervision.resources
+C:\Users\Anthony\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.csproj.GenerateResource.Cache
+C:\Users\Anthony\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.exe
+C:\Users\Anthony\Documents\projet-c-\Projet C#\Main\obj\Debug\Main.pdb

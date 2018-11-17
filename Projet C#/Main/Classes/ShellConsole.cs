@@ -45,17 +45,12 @@ namespace Main
 		}
 		
 		public void getDevice(){ // Récupère les interfaces de la machine
-			process.StartInfo.Arguments= "/C WinDump -D > Infos/devices.txt";
+			process.StartInfo.Arguments= "/C wmic NICCONFIG get Description > Infos/devices.txt";
 			process.Start();
 		}
 		
 		public void getIpMac(){ // Récupére l'adresse ip, mac et le nom de la carte
 			process.StartInfo.Arguments= "/C ipconfig -all | findstr /i \"ipv4 description physi\" > Infos/infoIpMac.txt";
-			process.Start();
-		}
-		
-		public void activeSniff(int interfa){ // lance le sniffer en fonction de l'interface choisi
-			process.StartInfo.Arguments= "/C WinDump -i "+interfa;
 			process.Start();
 		}
 		

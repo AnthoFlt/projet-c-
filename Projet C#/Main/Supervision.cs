@@ -26,7 +26,7 @@ namespace Main
 			
 			mapping = new Mapping(this.mainform.computer);
 		
-			while(true){
+			/*while(true){
 				this.mainform.shell.clearTxt("scan.txt");
 				this.mainform.shell.clearTxt("scanForm.txt");
 				System.Threading.Thread.Sleep(1000);
@@ -34,8 +34,9 @@ namespace Main
 				System.Threading.Thread.Sleep(2500);
 				analyseMapping();
 				System.Threading.Thread.Sleep(10000);
-			}
+			}*/
 			
+			label1.Text=this.mainform.computer.getIp();
 		}
 		
 		public void scanRes(string res){

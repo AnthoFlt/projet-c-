@@ -1,3 +1,14 @@
-   Description. . . . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 8260
-   Adresse physique . . . . . . . . . . . : E4-A7-A0-4B-90-A6
-   Adresse IPv4. . . . . . . . . . . . . .: 192.168.1.55
+   Description. . . . . . . . . . . . . . : Realtek PCIe GBE Family Controller
+   Adresse physique . . . . . . . . . . . : BC-EE-7B-8C-71-DE
+   Description. . . . . . . . . . . . . . : VirtualBox Host-Only Ethernet Adapter
+   Adresse physique . . . . . . . . . . . : 0A-00-27-00-00-12
+   Adresse IPv4. . . . . . . . . . . . . .: 192.168.56.1(pr‚f‚r‚) 
+   Description. . . . . . . . . . . . . . : VMware Virtual Ethernet Adapter for VMnet1
+   Adresse physique . . . . . . . . . . . : 00-50-56-C0-00-01
+   Adresse IPv4. . . . . . . . . . . . . .: 192.168.205.1(pr‚f‚r‚) 
+   Description. . . . . . . . . . . . . . : VMware Virtual Ethernet Adapter for VMnet8
+   Adresse physique . . . . . . . . . . . : 00-50-56-C0-00-08
+   Adresse IPv4. . . . . . . . . . . . . .: 192.168.11.1(pr‚f‚r‚) 
+   Description. . . . . . . . . . . . . . : ASUS PCE-AC88 802.11ac Network Adapter
+   Adresse physique . . . . . . . . . . . : 34-97-F6-B6-ED-20
+   Adresse IPv4. . . . . . . . . . . . . .: 192.168.1.250(pr‚f‚r‚) 

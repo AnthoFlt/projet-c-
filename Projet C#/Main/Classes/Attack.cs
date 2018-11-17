@@ -25,6 +25,7 @@ namespace Main
 		
 		public Attack() //Constructeur
 		{
+			dataAttacker=new List<Attacker>();
 		}
 		
 		//public abstract void analyze(string fichier);
@@ -32,11 +33,11 @@ namespace Main
 		
 		public void alert(string mail){
 			string to=mail;
-			string from="Blabla.com";// Créer une boite mail et la rentrer ici
+			string from="opsieapplicsharp@gmail.com";// Créer une boite mail et la rentrer ici
 			string subject="Alert, attack detected !";
-			string body="We notify you that an attack has been detected on your network !";
+			string body="We notify you that an attack has been detected on your network ! you can check the attachment file to see the report";
 			
-			Attachment data = new Attachment("/Infos/report");
+			Attachment data = new Attachment("/Infos/report.txt");
 			MailMessage message = new MailMessage(from, to, subject, body);
 			message.Attachments.Add(data);
 			SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);

@@ -28,7 +28,7 @@ namespace Main
 		}	
 
 		
-		public void setInterf(int numInterf)
+		void setInterf(int numInterf)
 		{
 			this.interf = numInterf;
 			this.ip = getInfo("ip", numInterf); 
@@ -36,13 +36,13 @@ namespace Main
 		}
 		
 		
-		public void FilesUpdate()
+		void FilesUpdate()
 		{
 			//shell.getIpMac();
 			//shell.getDevice();
 		}
 		
-		public String getInfo(String addr, int choix)
+		String getInfo(String addr, int choix)
 		{
 			FilesUpdate();
 			System.Threading.Thread.Sleep(500);

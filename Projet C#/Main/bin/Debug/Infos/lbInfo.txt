@@ -1,6 +1,6 @@
 Information sur l'application
 
-Version: 0.02
+Version: 0.04
 
 Nouveautes:
 - alerte envoye par mail
