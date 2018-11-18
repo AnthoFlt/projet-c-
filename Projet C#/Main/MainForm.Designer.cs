@@ -52,27 +52,31 @@ namespace Main
 			// 
 			// tbEmail
 			// 
-			this.tbEmail.Location = new System.Drawing.Point(27, 74);
+			this.tbEmail.Location = new System.Drawing.Point(36, 139);
+			this.tbEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.tbEmail.Name = "tbEmail";
-			this.tbEmail.Size = new System.Drawing.Size(158, 20);
+			this.tbEmail.Size = new System.Drawing.Size(209, 22);
 			this.tbEmail.TabIndex = 0;
 			this.tbEmail.Text = "Rentrez votre e-mail";
 			// 
 			// lbInfo
 			// 
 			this.lbInfo.FormattingEnabled = true;
-			this.lbInfo.Location = new System.Drawing.Point(225, 74);
+			this.lbInfo.ItemHeight = 16;
+			this.lbInfo.Location = new System.Drawing.Point(300, 139);
+			this.lbInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.lbInfo.Name = "lbInfo";
-			this.lbInfo.Size = new System.Drawing.Size(163, 199);
+			this.lbInfo.Size = new System.Drawing.Size(216, 180);
 			this.lbInfo.TabIndex = 1;
 			// 
 			// lblTitre
 			// 
 			this.lblTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblTitre.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-			this.lblTitre.Location = new System.Drawing.Point(69, 16);
+			this.lblTitre.Location = new System.Drawing.Point(92, 20);
+			this.lblTitre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblTitre.Name = "lblTitre";
-			this.lblTitre.Size = new System.Drawing.Size(258, 38);
+			this.lblTitre.Size = new System.Drawing.Size(344, 47);
 			this.lblTitre.TabIndex = 2;
 			this.lblTitre.Text = "Application de protection";
 			this.lblTitre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -80,25 +84,29 @@ namespace Main
 			// cbInterface
 			// 
 			this.cbInterface.FormattingEnabled = true;
-			this.cbInterface.Location = new System.Drawing.Point(27, 118);
+			this.cbInterface.Location = new System.Drawing.Point(37, 82);
+			this.cbInterface.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.cbInterface.Name = "cbInterface";
-			this.cbInterface.Size = new System.Drawing.Size(157, 21);
+			this.cbInterface.Size = new System.Drawing.Size(479, 24);
 			this.cbInterface.TabIndex = 3;
 			this.cbInterface.Text = "Choississez une interface";
 			// 
 			// lbProtection
 			// 
 			this.lbProtection.FormattingEnabled = true;
-			this.lbProtection.Location = new System.Drawing.Point(27, 178);
+			this.lbProtection.ItemHeight = 16;
+			this.lbProtection.Location = new System.Drawing.Point(36, 202);
+			this.lbProtection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.lbProtection.Name = "lbProtection";
-			this.lbProtection.Size = new System.Drawing.Size(158, 95);
+			this.lbProtection.Size = new System.Drawing.Size(209, 116);
 			this.lbProtection.TabIndex = 4;
 			// 
 			// btActiver
 			// 
-			this.btActiver.Location = new System.Drawing.Point(195, 299);
+			this.btActiver.Location = new System.Drawing.Point(37, 348);
+			this.btActiver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btActiver.Name = "btActiver";
-			this.btActiver.Size = new System.Drawing.Size(206, 33);
+			this.btActiver.Size = new System.Drawing.Size(479, 41);
 			this.btActiver.TabIndex = 5;
 			this.btActiver.Text = "Lancer la protection";
 			this.btActiver.UseVisualStyleBackColor = true;
@@ -106,15 +114,16 @@ namespace Main
 			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(413, 355);
+			this.ClientSize = new System.Drawing.Size(551, 437);
 			this.Controls.Add(this.btActiver);
 			this.Controls.Add(this.lbProtection);
 			this.Controls.Add(this.cbInterface);
 			this.Controls.Add(this.lblTitre);
 			this.Controls.Add(this.lbInfo);
 			this.Controls.Add(this.tbEmail);
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "MainForm";
 			this.Text = "Main";
 			this.ResumeLayout(false);

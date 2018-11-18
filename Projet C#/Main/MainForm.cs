@@ -10,6 +10,7 @@ using System;
 using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 
 namespace Main
@@ -51,11 +52,8 @@ namespace Main
 		}
 		void BtActiverClick(object sender, EventArgs e)
 		{
-			string[] interfa = cbInterface.SelectedIndex.ToString().Split('.');
-			int device = int.Parse(interfa[0]);
-			device++;
-			
-			initComput(device);
+			string interfa = cbInterface.Text;
+			initComput(interfa);
 			
 			if(!string.IsNullOrEmpty(computer.getIp())){//Si on a bien récuperé une ip via l'interface
 				Supervision sup = new Supervision(this); //on initialise le second formulaire
@@ -76,7 +74,7 @@ namespace Main
 			}
 		}
 
-		public void initComput(int device){ //On crée notre machine avec ses informatiuons
+		public void initComput(String device){ //On crée notre machine avec ses informatiuons
 			computer = new Computer(device,tbEmail.Text);
 			ip = computer.getIp();
 			if(!string.IsNullOrEmpty(ip)){

@@ -1,7 +1,0 @@
-Version: 0.02
-
-Nouveautes:
-- alerte envoye par mail
-- interfaces des cartes 
-repertories
-- interface d'accueil

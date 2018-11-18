@@ -8,7 +8,7 @@ namespace Main
 	public class Computer
 	{
 		private String ip;
-		private int interf;
+		private String interf;
 		private String mac;
 		private String mail;
 		
@@ -16,9 +16,9 @@ namespace Main
 		public Computer(){}
 
 		
-		public Computer(int numInterf, String mail)
+		public Computer(String interf, String mail)
 		{
-			setInterf(numInterf);
+			setInterf(interf);
 			this.mail = mail;
 		}
 		
@@ -28,52 +28,35 @@ namespace Main
 		}	
 
 		
-		void setInterf(int numInterf)
+		void setInterf(String interf)
 		{
-			this.interf = numInterf;
-			this.ip = getInfo("ip", numInterf); 
-			this.mac = getInfo("mac", numInterf); 
+			this.interf = interf;
+			this.ip = getInfo("ip", interf); 
+			this.mac = getInfo("mac", interf); 
 		}
 		
 		
 		void FilesUpdate()
 		{
-			//shell.getIpMac();
-			//shell.getDevice();
+			shell.getIpMac();
+			shell.getDevice();
 		}
 		
-		String getInfo(String addr, int choix)
+		String getInfo(String addr, String choix)
 		{
 			FilesUpdate();
 			System.Threading.Thread.Sleep(500);
-	        string[] lines = System.IO.File.ReadAllLines(@"Infos/devices.txt");
 	      
-	        
+
+			string[] lines = System.IO.File.ReadAllLines(@"Infos/infoIpMac.txt");
 	        int nb = 1;
-	        string res = "";
-	        foreach (string line in lines)
-	        {
-		        	if(nb == choix)
-		        	{
-		        		string pattern = "(\\((.*?)\\))";
-		        		Match m = Regex.Match(line, pattern);
-		        		res = m.Value;
-		        		res = res.Substring(1, res.Length - 2);
-		        	}
-	        		
-	        		nb++;
-	        }
-	        
-	        lines = System.IO.File.ReadAllLines(@"Infos/infoIpMac.txt");
-	        nb = 1;
 	        String avant = "";
 	        String avantavant = "";
 	        String macRetour = "";
 	        String ipRetour = "";
 	        foreach (string line in lines)
 	        {
-	        	int nbOcc = (avantavant.Length - avantavant.Replace(res,"").Length) / res.Length;
-	        	if(nbOcc > 0)
+	        	if(avantavant.Contains(choix.Trim()))
 	        	{
 	        		macRetour = avant.Substring(44, 17);
 	        		string line2 = line.Substring(44);
@@ -92,7 +75,7 @@ namespace Main
 		
 		
 		
-		public int getInterf()
+		public String getInterf()
 		{
 			return this.interf;
 		}

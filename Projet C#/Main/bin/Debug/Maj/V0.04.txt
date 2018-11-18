@@ -1,7 +1,0 @@
-Version: 0.04
-Nouveautés :
-- Création d'une adresse mail dedié pour l'envois d'alerte
-- Fichier en pièce jointe créé lors de l'envois de mail
-- Modification de la méthode de récupération des interfaces
-- Mise en place de contrôle pour les interfaces et adresse ip
-- Processus CMD caché à l'utilisateur
