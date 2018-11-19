@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -17,8 +18,10 @@ namespace Main
 	/// </summary>
 	public partial class Supervision : Form
 	{
+		Timer timer = new Timer();
 		MainForm mainform;
 		Mapping mapping;
+		
 		public Supervision(MainForm mainform)
 		{
 			InitializeComponent();
@@ -26,15 +29,11 @@ namespace Main
 			
 			mapping = new Mapping(this.mainform.computer);
 		
-			/*while(true){
-				this.mainform.shell.clearTxt("scan.txt");
-				this.mainform.shell.clearTxt("scanForm.txt");
-				scanRes(this.mainform.res);
-				analyseMapping();
-				System.Threading.Thread.Sleep(10000);
-			}*/
+			timer.Interval = 10000;
+			timer.Tick += new EventHandler(mappingTime);
+			timer.Enabled=true;
+       		timer.Start();
 			
-			label1.Text=this.mainform.computer.getIp();
 		}
 		
 		public void scanRes(string res){
@@ -46,6 +45,15 @@ namespace Main
 			this.mapping.analyseMapping();
 		}
 		
+		
+		
+		public void mappingTime(Object sender, EventArgs e){
+			this.mainform.shell.clearTxt("scan.txt");
+			this.mainform.shell.clearTxt("scanForm.txt");
+			
+			scanRes(this.mainform.res);
+			analyseMapping();
+		}
 		
 		void ArreterLaProtectionToolStripMenuItemClick(object sender, EventArgs e)
 		{
