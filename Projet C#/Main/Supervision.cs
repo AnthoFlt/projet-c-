@@ -29,9 +29,7 @@ namespace Main
 			/*while(true){
 				this.mainform.shell.clearTxt("scan.txt");
 				this.mainform.shell.clearTxt("scanForm.txt");
-				System.Threading.Thread.Sleep(1000);
 				scanRes(this.mainform.res);
-				System.Threading.Thread.Sleep(2500);
 				analyseMapping();
 				System.Threading.Thread.Sleep(10000);
 			}*/
@@ -41,12 +39,17 @@ namespace Main
 		
 		public void scanRes(string res){
 			this.mainform.shell.scan(res);
-			System.Threading.Thread.Sleep(2500);
 			this.mapping.formatScan(res);
 		}
 		
 		public void analyseMapping(){
 			this.mapping.analyseMapping();
+		}
+		
+		
+		void ArreterLaProtectionToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 		
 	}

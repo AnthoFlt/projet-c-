@@ -54,7 +54,7 @@ namespace Main
 			
 			if(!string.IsNullOrEmpty(computer.getIp())){//Si on a bien récuperé une ip via l'interface
 				Supervision sup = new Supervision(this); //on initialise le second formulaire
-				sup.Show();
+				sup.ShowDialog();
 			}else{
 				MessageBox.Show("Il semblerait que votre carte ne soit pas activée, ou que vous n'êtes raccordé à aucun réseau");
 			}
@@ -66,7 +66,8 @@ namespace Main
 			string[] allLinesDevice = File.ReadAllLines(@"Infos/devices.txt");
 			foreach(string line in allLinesDevice){
 				if(!line.Contains("WAN") && !line.Contains("RAS Async")  //On enlève des cartes réseaux qui ne sont pas importante
-				   && !line.Contains("Microsoft Kernel") && !line.Contains("Description"))
+				   && !line.Contains("Microsoft Kernel") && !line.Contains("Description")
+				   && !line.Contains("Microsoft Wi-Fi Direct Virtual"))
 					cbInterface.Items.Add(line);
 			}
 		}
