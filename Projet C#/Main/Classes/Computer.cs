@@ -44,9 +44,7 @@ namespace Main
 		
 		String getInfo(String addr, String choix)
 		{
-			FilesUpdate();
-			System.Threading.Thread.Sleep(500);
-	      
+			FilesUpdate();	      
 
 			string[] lines = System.IO.File.ReadAllLines(@"Infos/infoIpMac.txt");
 	        int nb = 1;

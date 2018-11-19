@@ -37,21 +37,25 @@ namespace Main
 		public void scan(string res){ // Récupère la résolution ARP d'une adresse et la place dans un fichier text
 			process.StartInfo.Arguments= "/C nmap -sn " +res+ ".0/24 | findstr \"MAC "+res+ "\" >> Infos/scan.txt";
 			process.Start();
+			process.WaitForExit();
 		}
 		
 		public void clearTxt(string file){ // efface le fichier arp
 			process.StartInfo.Arguments= "/C del Infos\\"+file;
 			process.Start();
+			process.WaitForExit();
 		}
 		
 		public void getDevice(){ // Récupère les interfaces de la machine
 			process.StartInfo.Arguments= "/C wmic NICCONFIG get Description > Infos/devices.txt";
 			process.Start();
+			process.WaitForExit();
 		}
 		
 		public void getIpMac(){ // Récupére l'adresse ip, mac et le nom de la carte
 			process.StartInfo.Arguments= "/C ipconfig -all | findstr /i \"ipv4 description physi\" > Infos/infoIpMac.txt";
 			process.Start();
+			process.WaitForExit();
 		}
 		
 	}

@@ -42,14 +42,11 @@ namespace Main
 			
 			
 			
-			shell.getDevice();
-			System.Threading.Thread.Sleep(1000);
+			shell.getDevice(); //On récupère les device via une commande shell
 			getDevice();
-			System.Threading.Thread.Sleep(1000);
-			shell.getIpMac();
-
 			
 		}
+		
 		void BtActiverClick(object sender, EventArgs e)
 		{
 			string interfa = cbInterface.Text;
@@ -65,7 +62,7 @@ namespace Main
 		
 		
 		
-		public void getDevice(){ //On récupère l'interface et on la formate
+		public void getDevice(){ //On récupère l'interface, on la formate et on l'ajoute à l'interface
 			string[] allLinesDevice = File.ReadAllLines(@"Infos/devices.txt");
 			foreach(string line in allLinesDevice){
 				if(!line.Contains("WAN") && !line.Contains("RAS Async")  //On enlève des cartes réseaux qui ne sont pas importante
@@ -81,10 +78,6 @@ namespace Main
 				string[] ipSplit=ip.Split('.');
 				res = ipSplit[0]+'.'+ipSplit[1]+'.'+ipSplit[2];
 			}
-		}
-		
-		public MainForm getMainForm(){
-			return this;
 		}
 		
 	}
