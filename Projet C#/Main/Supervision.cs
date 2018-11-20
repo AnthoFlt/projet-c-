@@ -28,11 +28,15 @@ namespace Main
 			this.mainform=mainform;
 			
 			mapping = new Mapping(this.mainform.computer);
-		
-			timer.Interval = 10000;
+			
+			this.mainform.shell.clearTxt("scan.txt");
+			this.mainform.shell.clearTxt("scanForm.txt");
+			scanRes(this.mainform.res);
+			analyseMapping();
+			/*timer.Interval = 10000;
 			timer.Tick += new EventHandler(mappingTime);
 			timer.Enabled=true;
-       		timer.Start();
+       		timer.Start();*/
 			
 		}
 		
@@ -48,11 +52,13 @@ namespace Main
 		
 		
 		public void mappingTime(Object sender, EventArgs e){
+			timer.Enabled=false;
 			this.mainform.shell.clearTxt("scan.txt");
 			this.mainform.shell.clearTxt("scanForm.txt");
 			
 			scanRes(this.mainform.res);
 			analyseMapping();
+			timer.Enabled=true;
 		}
 		
 		void ArreterLaProtectionToolStripMenuItemClick(object sender, EventArgs e)

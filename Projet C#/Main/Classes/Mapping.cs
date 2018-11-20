@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Main
 {
@@ -21,15 +22,15 @@ namespace Main
 	{
 		
 		
-		List <string> lIps;
-		List <string> LMacs;
+		Dictionary <int, string> lIps;
+		Dictionary <int, string> LMacs;
 		Computer computer;
 		string line;
 	
 		public Mapping(Computer computer)
 		{
-			lIps=new List<string>();
-			LMacs=new List<string>();
+			lIps=new Dictionary<int, string>();
+			LMacs=new Dictionary<int, string>();
 			this.computer=computer;
 		}
 		
@@ -47,7 +48,7 @@ namespace Main
 			StreamReader file = new StreamReader(@"Infos/scan.txt");  
 			while((line = file.ReadLine()) != null)  
 			{  
-				if(line.Contains(res) && !line.Contains(this.computer.getIp())){
+				if(line.Contains(res) && !line.Contains(this.computer.getIp()) ){
 					if(rIp.IsMatch(line)){
 						ips[i] = rIp.Match(line).Groups[0].Value;
 						i++;
@@ -63,9 +64,9 @@ namespace Main
 			file.Close();  
 			
 			StreamWriter wr = new StreamWriter(@"Infos/scanForm.txt");
-			for(i=0; i<macs.Length; i++){
-				wr.WriteLine(ips[i]);
-				wr.WriteLine(macs[i]);
+			for(i=0; i<ips.Length; i++){
+					wr.WriteLine(ips[i]);
+					wr.WriteLine(macs[i]);
 			}
 			wr.Close();
 		}
@@ -86,45 +87,65 @@ namespace Main
 		public void analyseMapping(){
 			string[] lines = File.ReadAllLines(@"Infos/scanForm.txt");			
 			if(LMacs != null){
-				foreach(string str in LMacs){ //A partir d'une liste définie lors de la première itération
-					if(!Array.Exists(lines, element => element == str)){ //On vérfie si la mac n'est pas dans le fichier
-						int bina = LMacs.BinarySearch(str);//Dans ce cas on récupère son index
-						LMacs.RemoveAt(bina);//Et on le retire de sa liste
+				foreach(KeyValuePair<int, string> str in LMacs){ //A partir d'une liste définie lors de la première itération
+					if(!Array.Exists(lines, element => element == str.Value)){ //On vérfie si la mac n'est pas dans le fichier
+						int bina = KeyByValue(LMacs, str.Value);//Dans ce cas on récupère son index
+						LMacs.Remove(bina);//Et on le retire de sa liste
 						
-						if(!Array.Exists(lines, element => element == lIps.ElementAt(bina))){//On verfie que l'adresse à aussi disparu
-							lIps.RemoveAt(bina); //Si c'est le cas, on retir aussi l'ip de la liste
+						if(!Array.Exists(lines, element => element == lIps[bina])){//On verfie que l'adresse à aussi disparu
+							lIps.Remove(bina); //Si c'est le cas, on retir aussi l'ip de la liste
 						}
 					}
 				}
 			}
 			
-			for(int i = 0; i<=(numberLine(@"Infos/scanForm.txt")/2); i=i+2){ // A partir du fichier de scan
+			int j = 0;
+			for(int i = 0; i<=(numberLine(@"Infos/scanForm.txt")-1); i=i+2){ // A partir du fichier de scan	
 				
-				if(lIps==null || !lIps.Contains(lines[i])){ // On verifie si la list ne contient pas l'adresse ip
-					lIps.Add(lines[i]); // Si c'est vrai on ajoute l'ip dans la liste
-					LMacs.Add(lines[i+1]); // Ainsi que la mac
-				}
-				///////////////////////////////////////////////////////////////////////////////// ne marche pas encore
-				if(lIps.Contains(lines[i])){ // Si on à bien une adresse ip
-					int binari = lIps.BinarySearch(lines[i]); //On récupère son index
-					if(LMacs.ElementAt(binari) != lines[i+1]){
-						LMacs.ElementAt(binari).Replace(LMacs.ElementAt(binari),lines[i+1]);
+				if(lIps!=null && lIps.ContainsValue(lines[i])){ // Si on à bien une adresse ip
+					int binari = KeyByValue(lIps, lines[i]); //On récupère son index
+					if(LMacs[binari]!= lines[i+1]){
+						LMacs[binari] = lines[i+1];
 					}
 				}
-				///////////////////////////////////////////////////////////////////////////////
+				// Lors de la deuxieme analyse, il faut conserver le dernier int du dictionnaire
+				// Solution : boucle pour rechercher un int dispo ou on prend le dernier du dictio 
+				else if(lIps==null || !lIps.ContainsValue(lines[i])){ // On verifie si la list ne contient pas l'adresse ip
+					lIps.Add(j,lines[i]); // Si c'est vrai on ajoute l'ip dans la liste
+					LMacs.Add(j,lines[i+1]); // Ainsi que la mac
+					j++;
+				}
+				
 			}
 			
 			StreamWriter wrIp = new StreamWriter(@"Infos/testIp.txt");
-			foreach(string ip in lIps){
-				wrIp.WriteLine(ip);
+			foreach(KeyValuePair<int, string> ip in lIps){
+				wrIp.Write(ip.Key + " - ");
+				wrIp.WriteLine(ip.Value);
 			}
 			wrIp.Close();
 			
 			StreamWriter wrMac = new StreamWriter(@"Infos/testMac.txt");
-			foreach(string mac in LMacs){
-				wrMac.WriteLine(mac);
+			foreach(KeyValuePair<int, string> mac in LMacs){
+				wrMac.Write(mac.Key + " - ");
+				wrMac.WriteLine(mac.Value);
 			}
 			wrMac.Close();
+		}
+		
+		
+		public int KeyByValue(Dictionary<int, string> dict, string val)
+		{
+		    int key=0;
+		    foreach (KeyValuePair<int, string> pair in dict)
+		    {
+		        if (pair.Value == val)
+		        { 
+		            key = pair.Key; 
+		            break; 
+		        }
+		    }
+		    return key;
 		}
 		
 	}
