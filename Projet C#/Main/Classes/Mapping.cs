@@ -88,7 +88,7 @@ namespace Main
 			string[] lines = File.ReadAllLines(@"Infos/scanForm.txt");
 			if(LMacs != null){
 				for(int i = 0; i<LMacs.Count; i++){
-					if(!String.IsNullOrEmpty(LMacs[i])){
+					if(LMacs.Keys.Contains(i)){ //Si la la clé existe
 						if(!Array.Exists(lines, element => element == LMacs[i])){ //On vérfie si la mac n'est pas dans le fichier
 							int bina = KeyByValue(LMacs, LMacs[i]);//Dans ce cas on récupère son index
 							LMacs.Remove(bina);//Et on le retire de sa liste
