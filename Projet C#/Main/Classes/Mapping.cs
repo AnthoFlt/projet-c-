@@ -99,7 +99,12 @@ namespace Main
 				}
 			}
 			
-			int j = 0;
+			int j=0;
+			for(j=0; j<lIps.Count; j++){
+				if(!lIps.Keys.Contains(j))
+					break;
+			}
+			
 			for(int i = 0; i<=(numberLine(@"Infos/scanForm.txt")-1); i=i+2){ // A partir du fichier de scan	
 				
 				if(lIps!=null && lIps.ContainsValue(lines[i])){ // Si on à bien une adresse ip

@@ -56,7 +56,7 @@ namespace Main
 				Supervision sup = new Supervision(this); //on initialise le second formulaire
 				sup.ShowDialog();
 			}else{
-				MessageBox.Show("Il semblerait que votre carte ne soit pas activée, ou que vous n'êtes raccordé à aucun réseau");
+				MessageBox.Show("Il semblerait que votre carte ne soit pas activé, ou que vous n'êtes raccordé à aucun réseau");
 			}
 		}
 		

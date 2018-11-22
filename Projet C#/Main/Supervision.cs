@@ -26,13 +26,13 @@ namespace Main
 		{
 			InitializeComponent();
 			this.mainform=mainform;
-			
 			mapping = new Mapping(this.mainform.computer);
 			
-			this.mainform.shell.clearTxt("scan.txt");
-			this.mainform.shell.clearTxt("scanForm.txt");
+			//this.mainform.shell.clearTxt("scan.txt");
+			//this.mainform.shell.clearTxt("scanForm.txt");
+			
 			scanRes(this.mainform.res);
-			analyseMapping();
+			//analyseMapping();
 			/*timer.Interval = 10000;
 			timer.Tick += new EventHandler(mappingTime);
 			timer.Enabled=true;
