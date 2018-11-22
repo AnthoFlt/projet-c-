@@ -88,12 +88,14 @@ namespace Main
 			string[] lines = File.ReadAllLines(@"Infos/scanForm.txt");
 			if(LMacs != null){
 				for(int i = 0; i<LMacs.Count; i++){
-					if(!Array.Exists(lines, element => element == LMacs[i])){ //On vérfie si la mac n'est pas dans le fichier
-						int bina = KeyByValue(LMacs, LMacs[i]);//Dans ce cas on récupère son index
-						LMacs.Remove(bina);//Et on le retire de sa liste
-						
-						if(!Array.Exists(lines, element => element == lIps[bina])){//On verfie que l'adresse à aussi disparu
-							lIps.Remove(bina); //Si c'est le cas, on retir aussi l'ip de la liste
+					if(!String.IsNullOrEmpty(LMacs[i])){
+						if(!Array.Exists(lines, element => element == LMacs[i])){ //On vérfie si la mac n'est pas dans le fichier
+							int bina = KeyByValue(LMacs, LMacs[i]);//Dans ce cas on récupère son index
+							LMacs.Remove(bina);//Et on le retire de sa liste
+							
+							if(!Array.Exists(lines, element => element == lIps[bina])){//On verfie que l'adresse à aussi disparu
+								lIps.Remove(bina); //Si c'est le cas, on retir aussi l'ip de la liste
+							}
 						}
 					}
 				}
