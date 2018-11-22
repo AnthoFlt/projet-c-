@@ -47,18 +47,17 @@ namespace Main
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.afficherRapportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.arreterLaProtectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(175, 204);
-			this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+			this.label1.Location = new System.Drawing.Point(75, 91);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(257, 134);
+			this.label1.Size = new System.Drawing.Size(110, 60);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "label1";
 			// 
@@ -69,7 +68,8 @@ namespace Main
 			this.optionsToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1272, 45);
+			this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
+			this.menuStrip1.Size = new System.Drawing.Size(545, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -80,7 +80,7 @@ namespace Main
 			this.toolStripSeparator1,
 			this.arreterLaProtectionToolStripMenuItem});
 			this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(123, 41);
+			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 22);
 			this.optionsToolStripMenuItem.Text = "Options";
 			// 
 			// afficherRapportsToolStripMenuItem
@@ -88,35 +88,34 @@ namespace Main
 			this.afficherRapportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
 			this.toolStripComboBox1});
 			this.afficherRapportsToolStripMenuItem.Name = "afficherRapportsToolStripMenuItem";
-			this.afficherRapportsToolStripMenuItem.Size = new System.Drawing.Size(363, 42);
+			this.afficherRapportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.afficherRapportsToolStripMenuItem.Text = "Afficher rapports";
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(360, 6);
-			// 
-			// arreterLaProtectionToolStripMenuItem
-			// 
-			this.arreterLaProtectionToolStripMenuItem.Name = "arreterLaProtectionToolStripMenuItem";
-			this.arreterLaProtectionToolStripMenuItem.Size = new System.Drawing.Size(363, 42);
-			this.arreterLaProtectionToolStripMenuItem.Text = "Arreter la protection";
-			this.arreterLaProtectionToolStripMenuItem.Click += new System.EventHandler(this.ArreterLaProtectionToolStripMenuItemClick);
 			// 
 			// toolStripComboBox1
 			// 
 			this.toolStripComboBox1.Name = "toolStripComboBox1";
-			this.toolStripComboBox1.Size = new System.Drawing.Size(121, 45);
+			this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			// 
+			// arreterLaProtectionToolStripMenuItem
+			// 
+			this.arreterLaProtectionToolStripMenuItem.Name = "arreterLaProtectionToolStripMenuItem";
+			this.arreterLaProtectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.arreterLaProtectionToolStripMenuItem.Text = "Arreter la protection";
+			this.arreterLaProtectionToolStripMenuItem.Click += new System.EventHandler(this.ArreterLaProtectionToolStripMenuItemClick);
 			// 
 			// Supervision
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1272, 797);
+			this.ClientSize = new System.Drawing.Size(545, 351);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
-			this.Margin = new System.Windows.Forms.Padding(7);
 			this.Name = "Supervision";
 			this.Text = "Supervision";
 			this.menuStrip1.ResumeLayout(false);

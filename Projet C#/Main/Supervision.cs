@@ -31,12 +31,12 @@ namespace Main
 			//this.mainform.shell.clearTxt("scan.txt");
 			//this.mainform.shell.clearTxt("scanForm.txt");
 			
-			scanRes(this.mainform.res);
+			//scanRes(this.mainform.res);
 			//analyseMapping();
-			/*timer.Interval = 10000;
+			timer.Interval = 10000;
 			timer.Tick += new EventHandler(mappingTime);
 			timer.Enabled=true;
-       		timer.Start();*/
+       		timer.Start();
 			
 		}
 		
@@ -64,7 +64,6 @@ namespace Main
 		void ArreterLaProtectionToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			this.Close();
-		}
-		
+		}	
 	}
 }

@@ -85,11 +85,11 @@ namespace Main
 		
 		
 		public void analyseMapping(){
-			string[] lines = File.ReadAllLines(@"Infos/scanForm.txt");			
+			string[] lines = File.ReadAllLines(@"Infos/scanForm.txt");
 			if(LMacs != null){
-				foreach(KeyValuePair<int, string> str in LMacs){ //A partir d'une liste définie lors de la première itération
-					if(!Array.Exists(lines, element => element == str.Value)){ //On vérfie si la mac n'est pas dans le fichier
-						int bina = KeyByValue(LMacs, str.Value);//Dans ce cas on récupère son index
+				for(int i = 0; i<LMacs.Count; i++){
+					if(!Array.Exists(lines, element => element == LMacs[i])){ //On vérfie si la mac n'est pas dans le fichier
+						int bina = KeyByValue(LMacs, LMacs[i]);//Dans ce cas on récupère son index
 						LMacs.Remove(bina);//Et on le retire de sa liste
 						
 						if(!Array.Exists(lines, element => element == lIps[bina])){//On verfie que l'adresse à aussi disparu
@@ -98,13 +98,8 @@ namespace Main
 					}
 				}
 			}
-			
+				
 			int j=0;
-			for(j=0; j<lIps.Count; j++){
-				if(!lIps.Keys.Contains(j))
-					break;
-			}
-			
 			for(int i = 0; i<=(numberLine(@"Infos/scanForm.txt")-1); i=i+2){ // A partir du fichier de scan	
 				
 				if(lIps!=null && lIps.ContainsValue(lines[i])){ // Si on à bien une adresse ip
@@ -113,12 +108,16 @@ namespace Main
 						LMacs[binari] = lines[i+1];
 					}
 				}
-				// Lors de la deuxieme analyse, il faut conserver le dernier int du dictionnaire
-				// Solution : boucle pour rechercher un int dispo ou on prend le dernier du dictio 
+
 				else if(lIps==null || !lIps.ContainsValue(lines[i])){ // On verifie si la list ne contient pas l'adresse ip
+					for(j=0; j<lIps.Count; j++){ // On verifie quel emplacement est disponible
+						if(!lIps.Keys.Contains(j))
+							if(!LMacs.Keys.Contains(j))
+								break;
+					}
+					
 					lIps.Add(j,lines[i]); // Si c'est vrai on ajoute l'ip dans la liste
 					LMacs.Add(j,lines[i+1]); // Ainsi que la mac
-					j++;
 				}
 				
 			}
