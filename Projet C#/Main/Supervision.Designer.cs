@@ -14,7 +14,6 @@ namespace Main
 		/// Designer variable used to keep track of non-visual components.
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
-		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem afficherRapportsToolStripMenuItem;
@@ -43,7 +42,6 @@ namespace Main
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.afficherRapportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,14 +51,6 @@ namespace Main
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(75, 91);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(110, 60);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "label1";
-			// 
 			// menuStrip1
 			// 
 			this.menuStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
@@ -68,8 +58,8 @@ namespace Main
 			this.optionsToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-			this.menuStrip1.Size = new System.Drawing.Size(545, 24);
+			this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+			this.menuStrip1.Size = new System.Drawing.Size(1700, 47);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -80,7 +70,7 @@ namespace Main
 			this.toolStripSeparator1,
 			this.arreterLaProtectionToolStripMenuItem});
 			this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 22);
+			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(123, 43);
 			this.optionsToolStripMenuItem.Text = "Options";
 			// 
 			// afficherRapportsToolStripMenuItem
@@ -88,34 +78,36 @@ namespace Main
 			this.afficherRapportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
 			this.toolStripComboBox1});
 			this.afficherRapportsToolStripMenuItem.Name = "afficherRapportsToolStripMenuItem";
-			this.afficherRapportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.afficherRapportsToolStripMenuItem.Size = new System.Drawing.Size(363, 42);
 			this.afficherRapportsToolStripMenuItem.Text = "Afficher rapports";
 			// 
 			// toolStripComboBox1
 			// 
 			this.toolStripComboBox1.Name = "toolStripComboBox1";
-			this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+			this.toolStripComboBox1.Size = new System.Drawing.Size(121, 45);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(360, 6);
 			// 
 			// arreterLaProtectionToolStripMenuItem
 			// 
 			this.arreterLaProtectionToolStripMenuItem.Name = "arreterLaProtectionToolStripMenuItem";
-			this.arreterLaProtectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.arreterLaProtectionToolStripMenuItem.Size = new System.Drawing.Size(363, 42);
 			this.arreterLaProtectionToolStripMenuItem.Text = "Arreter la protection";
 			this.arreterLaProtectionToolStripMenuItem.Click += new System.EventHandler(this.ArreterLaProtectionToolStripMenuItemClick);
 			// 
 			// Supervision
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(545, 351);
-			this.Controls.Add(this.label1);
+			this.AutoScroll = true;
+			this.AutoSize = true;
+			this.ClientSize = new System.Drawing.Size(1700, 851);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
+			this.Margin = new System.Windows.Forms.Padding(7);
 			this.Name = "Supervision";
 			this.Text = "Supervision";
 			this.menuStrip1.ResumeLayout(false);

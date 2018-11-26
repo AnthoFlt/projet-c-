@@ -39,7 +39,7 @@ namespace Main
 			int linenumber=numberLine(@"Infos/scan.txt")/2;
 			
 			string[] ips = new string[linenumber];
-			string[] macs= new string[linenumber];
+			string[] macs= new string[linenumber+1];
 			int i=0;
 			int j=0;
 			
@@ -55,7 +55,7 @@ namespace Main
 					}
 				}
 				
-				if(line.Contains("MAC")){
+				if(line.Contains("MAC Address")){
 					macs[j]=line.Substring(13,17);
 					j++;
 				}
@@ -152,6 +152,14 @@ namespace Main
 		        }
 		    }
 		    return key;
+		}
+		
+		public Dictionary<int, string> getLips(){
+			return lIps;
+		}
+		
+		public Dictionary<int, string> getLmacs(){
+			return LMacs;
 		}
 		
 	}
