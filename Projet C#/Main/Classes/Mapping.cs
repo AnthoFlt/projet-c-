@@ -22,8 +22,8 @@ namespace Main
 	{
 		
 		
-		Dictionary <int, string> lIps;
-		Dictionary <int, string> LMacs;
+		Dictionary <int, string> lIps; // Dictionnaire contenant les adresses ip (string) et leurs emplacement (int)
+		Dictionary <int, string> LMacs; // Dictionnaire contenant les adresses Mac (string) et leurs emplacement (int)
 		Computer computer;
 		string line;
 	
@@ -35,7 +35,7 @@ namespace Main
 		}
 		
 		
-		public void formatScan(string res){
+		public void formatScan(string res){ // Fonction qui va récupérer uniquement les adresses ip et Mac du scan
 			int linenumber=numberLine(@"Infos/scan.txt")/2;
 			
 			string[] ips = new string[linenumber];
@@ -73,7 +73,7 @@ namespace Main
 		
 		
 		
-		int numberLine(string fichier){
+		int numberLine(string fichier){ //Permet de retourner le nombre de ligne d'un fichier
 			using (StreamReader r = new StreamReader(fichier))
 			{
 				int i = 0;
@@ -86,8 +86,8 @@ namespace Main
 		
 		public void analyseMapping(){
 			string[] lines = File.ReadAllLines(@"Infos/scanForm.txt");
-			if(LMacs != null){
-				for(int i = 0; i<LMacs.Count; i++){
+			if(LMacs != null){ //On vérifie si le dictionnaire a déjà été rempli
+				for(int i = 0; i<LMacs.Count; i++){ //On parcourt le dictionnaire
 					if(LMacs.Keys.Contains(i)){ //Si la la clé existe
 						if(!Array.Exists(lines, element => element == LMacs[i])){ //On vérfie si la mac n'est pas dans le fichier
 							int bina = KeyByValue(LMacs, LMacs[i]);//Dans ce cas on récupère son index
@@ -106,8 +106,8 @@ namespace Main
 				
 				if(lIps!=null && lIps.ContainsValue(lines[i])){ // Si on à bien une adresse ip
 					int binari = KeyByValue(lIps, lines[i]); //On récupère son index
-					if(LMacs[binari]!= lines[i+1]){
-						LMacs[binari] = lines[i+1];
+					if(LMacs.ContainsKey(binari) && LMacs[binari]!= lines[i+1]){ // On verifie que l'index pour la mac existe et qu'il correspond à la bonne mac
+						LMacs[binari] = lines[i+1]; //Sinon on la remplace
 					}
 				}
 
@@ -118,14 +118,14 @@ namespace Main
 								break;
 					}
 					
-					lIps.Add(j,lines[i]); // Si c'est vrai on ajoute l'ip dans la liste
+					lIps.Add(j,lines[i]); //Une fois l'emplacement trouvé, on ajoute l'ip
 					LMacs.Add(j,lines[i+1]); // Ainsi que la mac
 				}
 				
 			}
 			
-			StreamWriter wrIp = new StreamWriter(@"Infos/testIp.txt");
-			foreach(KeyValuePair<int, string> ip in lIps){
+			StreamWriter wrIp = new StreamWriter(@"Infos/testIp.txt"); // Nous permet de générer un fichier pour vérifier que
+			foreach(KeyValuePair<int, string> ip in lIps){				// les ips sont bien enregistrée	s
 				wrIp.Write(ip.Key + " - ");
 				wrIp.WriteLine(ip.Value);
 			}
@@ -137,10 +137,11 @@ namespace Main
 				wrMac.WriteLine(mac.Value);
 			}
 			wrMac.Close();
+			
 		}
 		
 		
-		public int KeyByValue(Dictionary<int, string> dict, string val)
+		public int KeyByValue(Dictionary<int, string> dict, string val) //Permet de récupérer la clé en fonction de la valeur
 		{
 		    int key=0;
 		    foreach (KeyValuePair<int, string> pair in dict)
