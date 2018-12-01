@@ -18,16 +18,15 @@ namespace Main
 		private string ip;
 		private string mac;
 		private string hourAttack;
-		private string localisation;
 		
 		
-		public Attacker() //Constructeur
+		public Attacker(string ip, string mac) //Constructeur
 		{
+			this.ip = ip;
+			this.mac = mac;
+			this.hourAttack = DateTime.Now.ToString("dd/MM/yy HH:mm");
 		}
 		
-		/*public string geolocalize(string ip){
-			
-		}*/
 		
 		//Getter & Setter
 		public string getMac(){
@@ -52,14 +51,6 @@ namespace Main
 		
 		public void sethourAttack(string hourAttack){
 			this.hourAttack=hourAttack;
-		}
-		
-		public string getlocalisation(){
-			return this.localisation;
-		}
-		
-		public void setlocalisation(string localisation){
-			this.localisation=localisation;
 		}
 		
 	}

@@ -23,13 +23,13 @@ namespace Main
 		}
 		
 		
-		/*public override void analyze(string fichier){
+		public override void analyze(){
 			
-		}*/
+		}
 		
-		/*public override void makeReport(){
+		public override void makeReport(int numb){
 			
-		}*/
+		}
 		
 		/*public void getDataSniff(int interfa){
 			

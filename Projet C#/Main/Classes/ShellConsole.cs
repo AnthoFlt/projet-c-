@@ -46,6 +46,12 @@ namespace Main
 			process.WaitForExit();
 		}
 		
+		public void arpTab(string res){ // efface le fichier arp
+			process.StartInfo.Arguments= "/C arp -a | findstr \"MAC "+res+ ".\" | findstr /v Interface > Infos/arpTab.txt";
+			process.Start();
+			process.WaitForExit();
+		}
+		
 		public void getDevice(){ // Récupère les interfaces de la machine
 			process.StartInfo.Arguments= "/C wmic NICCONFIG get Description > Infos/devices.txt";
 			process.Start();

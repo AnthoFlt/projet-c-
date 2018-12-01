@@ -73,7 +73,7 @@ namespace Main
 		
 		
 		
-		int numberLine(string fichier){ //Permet de retourner le nombre de ligne d'un fichier
+		public int numberLine(string fichier){ //Permet de retourner le nombre de ligne d'un fichier
 			using (StreamReader r = new StreamReader(fichier))
 			{
 				int i = 0;

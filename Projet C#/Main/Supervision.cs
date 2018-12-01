@@ -24,9 +24,10 @@ namespace Main
 		System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 		MainForm mainform;
 		Mapping mapping;
+		ArpSpoof arpspoof;
 	
 		List<Control> controlToRemove = new List<Control>();
-		Image pcImage = Image.FromFile ("Infos/Icon_pc.png"); 
+		//Image pcImage = Image.FromFile ("Infos/Icon_pc.png"); 
 		
 		
 		public Supervision(MainForm mainform)
@@ -35,14 +36,17 @@ namespace Main
 			InitializeComponent();
 			this.mainform=mainform;
 			mapping = new Mapping(this.mainform.computer);
+			arpspoof = new ArpSpoof(this.mainform);
 			
-			this.mainform.shell.clearTxt("scan.txt");
+			arpspoof.getArp(mainform.res);
+			arpspoof.analyze();
+			/*this.mainform.shell.clearTxt("scan.txt");
 			this.mainform.shell.clearTxt("scanForm.txt");
 			
 			scanRes(this.mainform.res);
 			analyseMapping();
 			
-			affichage(mapping.getLips(), mapping.getLmacs());
+			affichage(mapping.getLips(), mapping.getLmacs());*/
 			
 			timer.Interval = 10000;
 			timer.Tick += new EventHandler(mappingTime);
@@ -64,13 +68,15 @@ namespace Main
 		public void mappingTime(Object sender, EventArgs e){
 			timer.Enabled=false;
 			
-			this.mainform.shell.clearTxt("scan.txt");
-			this.mainform.shell.clearTxt("scanForm.txt");
+			//this.mainform.shell.clearTxt("scan.txt");
+			//this.mainform.shell.clearTxt("scanForm.txt");
 			
-			scanRes(this.mainform.res);
-			analyseMapping();
+			//scanRes(this.mainform.res);
+			//analyseMapping();
+			arpspoof.getArp(mainform.res);
+			arpspoof.analyze();
 			Thread.Sleep(1000);
-			affichage(mapping.getLips(), mapping.getLmacs());
+			//affichage(mapping.getLips(), mapping.getLmacs());
 			
 			timer.Enabled=true;
 		}

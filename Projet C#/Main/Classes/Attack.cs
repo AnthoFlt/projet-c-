@@ -9,40 +9,48 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Mail;
-using System.Net.Mime;
-using System.Threading;
-using System.ComponentModel;
+using System.IO;
+
 
 namespace Main
 {
 	/// <summary>
 	/// Description of Attack.
 	/// </summary>
-	public class Attack
+	public abstract class Attack
 	{
 		protected List<Attacker> dataAttacker;
-	
+		public ShellConsole shell = new ShellConsole();
+		protected MainForm mainform;
+		System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 		
 		public Attack() //Constructeur
 		{
 			dataAttacker=new List<Attacker>();
+			
+			
+			timer.Interval = 300000;
+			timer.Tick += new EventHandler(resetList);
+			timer.Enabled=true;
+       		timer.Start();
 		}
 		
-		//public abstract void analyze(string fichier);
-		//public abstract void makeReport();
+		public abstract void analyze();
+		public abstract void makeReport(int numb);
 		
-		public void alert(string mail){
+		public void alert(string mail, string report){
 			string to=mail;
-			string from="opsieapplicsharp@gmail.com";// Créer une boite mail et la rentrer ici
-			string subject="Alert, attack detected !";
-			string body="We notify you that an attack has been detected on your network ! you can check the attachment file to see the report";
+			string from="OpsieAppliCsharpProjet@gmail.com";
+			string subject="Alerte, attaque détécté sur votre machine !";
+			string body="Bonjour, \n\nNous vous informons que votre machine a subi une attaque. \nVous trouverez en pièce jointe les informations necessaire des machines impactée \n\nCordialement,\nLes développeurs. ";
 			
-			Attachment data = new Attachment("/Infos/report.txt");
+			Attachment data = new Attachment("Rapports/"+report);
+			data.Name= report;
 			MailMessage message = new MailMessage(from, to, subject, body);
 			message.Attachments.Add(data);
 			SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
 			
-			smtp.Credentials= new System.Net.NetworkCredential("opsieapplicsharp@gmail.com", "opsie20182019");
+			smtp.Credentials= new System.Net.NetworkCredential("OpsieAppliCsharpProjet@gmail.com", "Opsie20182019");
 			smtp.EnableSsl=true;
 			
 			try{
@@ -58,5 +66,22 @@ namespace Main
 			
 		}*/
 		
+		public void resetList(Object sender, EventArgs e){
+			dataAttacker.Clear();
+		}
+		
+
+		public int numberLine(string fichier){ //Permet de retourner le nombre de ligne d'un fichier
+			using (StreamReader r = new StreamReader(fichier))
+			{
+				int i = 0;
+				while (r.ReadLine() != null)
+					i++; 
+				return i;
+			}
+		}
+
+		
+				
 	}
 }
