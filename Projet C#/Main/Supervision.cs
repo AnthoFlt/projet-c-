@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Main
 {
@@ -25,34 +26,49 @@ namespace Main
 		MainForm mainform;
 		Mapping mapping;
 		ArpSpoof arpspoof;
-	
+		Thread arpThread; 
 		List<Control> controlToRemove = new List<Control>();
-		//Image pcImage = Image.FromFile ("Infos/Icon_pc.png"); 
 		
 		
 		public Supervision(MainForm mainform)
 		{
 			
 			InitializeComponent();
+			
 			this.mainform=mainform;
 			mapping = new Mapping(this.mainform.computer);
 			arpspoof = new ArpSpoof(this.mainform);
+			arpThread = new Thread(new ThreadStart(arpAnalyse));
 			
-			arpspoof.getArp(mainform.res);
-			arpspoof.analyze();
-			/*this.mainform.shell.clearTxt("scan.txt");
-			this.mainform.shell.clearTxt("scanForm.txt");
+			arpThread.Start();
 			
 			scanRes(this.mainform.res);
 			analyseMapping();
 			
-			affichage(mapping.getLips(), mapping.getLmacs());*/
+			while(arpThread.IsAlive){
+				Thread.Sleep(1000);
+			}
+			
+			affichage(mapping.getLips(), mapping.getLmacs());
 			
 			timer.Interval = 10000;
 			timer.Tick += new EventHandler(mappingTime);
+			timer.Tick += new EventHandler(arpThreaStart);
 			timer.Enabled=true;
        		timer.Start();
 			
+		}
+		
+		public void arpThreaStart(Object sender, EventArgs e){
+			if(!arpThread.IsAlive){
+				arpThread = new Thread(new ThreadStart(arpAnalyse));
+				arpThread.Start();
+			}
+		}
+		
+		public void arpAnalyse(){
+			arpspoof.getArp(mainform.res);
+			arpspoof.analyze();
 		}
 		
 		public void scanRes(string res){
@@ -68,29 +84,30 @@ namespace Main
 		public void mappingTime(Object sender, EventArgs e){
 			timer.Enabled=false;
 			
-			//this.mainform.shell.clearTxt("scan.txt");
-			//this.mainform.shell.clearTxt("scanForm.txt");
+			scanRes(this.mainform.res);
+			if(File.Exists("Infos/scan.txt")){
+				analyseMapping();
+			}else{
+				MessageBox.Show("Il semblerait qu'une erreur soit survenue durant le scan. Merci de réessayer.\nSi le problème persiste, merci de contacter les developeurs");
+				this.Close();
+			}
+			while(arpThread.IsAlive){
+				Thread.Sleep(1000);
+			}
 			
-			//scanRes(this.mainform.res);
-			//analyseMapping();
-			arpspoof.getArp(mainform.res);
-			arpspoof.analyze();
-			Thread.Sleep(1000);
-			//affichage(mapping.getLips(), mapping.getLmacs());
+			affichage(mapping.getLips(), mapping.getLmacs());
 			
 			timer.Enabled=true;
 		}
 		
-		void ArreterLaProtectionToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			this.Close();
-		}	
+		
 		
 			
 			
 			
 		public void affichage(Dictionary<int, string> Ips, Dictionary<int, string> Macs){
-				
+			int res = Ips.Count()+1;
+			
 			foreach(Control ctr in Controls){
 				if(ctr is Label){
 					controlToRemove.Add(ctr);
@@ -147,12 +164,43 @@ namespace Main
 			
 			var tempNb = new Label();
 			tempNb.Location = new Point(100,80);
-    			tempNb.Text = "Nombre de machine présente sur le réseau : " + Ips.Count;
+			tempNb.Text = "Nombre de machine présente sur le réseau : " + res;
     			tempNb.Size = new Size(400,50);
     			tempNb.Font = new Font("default",10);
     			tempNb.Name = "nbReseau";
     			
     			Controls.Add(tempNb);
+    			
+    			affichePc();
+		}
+		
+		
+		void affichePc(){
+			var tempIpPc= new Label(); //Label pour l'ip de notre pc
+    			tempIpPc.Location = new Point(900,50);
+    			tempIpPc.Text = "Votre ip : " + mainform.computer.getIp();
+    			tempIpPc.Size = new Size(200,20);
+    			tempIpPc.Font = new Font("default",8);
+    			tempIpPc.Name = "IpPc";
+    			Controls.Add(tempIpPc);
+    			
+    			var tempMacPc= new Label(); //Label pour la mac de notre pc 
+    			tempMacPc.Location = new Point(900,70);
+    			tempMacPc.Text = "Votre mac : " +mainform.computer.getMac();
+    			tempMacPc.Size = new Size(200,75);
+    			tempMacPc.Font = new Font("default",8);
+    			tempMacPc.Name = "MacPc";
+				Controls.Add(tempMacPc);
+		}
+		
+		void AfficherRapportsToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			Process.Start(@"Rapports");
+		}	
+		
+		void ArreterLaProtectionToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			this.Close();
 		}	
 	}
 }

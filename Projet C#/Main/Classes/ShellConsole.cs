@@ -35,18 +35,18 @@ namespace Main
 		
 		
 		public void scan(string res){ // Récupère la résolution ARP d'une adresse et la place dans un fichier text
-			process.StartInfo.Arguments= "/C nmap -sn " +res+ ".0/24 | findstr \"MAC "+res+ "\" >> Infos/scan.txt";
+			process.StartInfo.Arguments= "/C nmap -sn " +res+ ".0/24 | findstr \"MAC "+res+ "\" > Infos/scan.txt";
 			process.Start();
 			process.WaitForExit();
 		}
 		
-		public void clearTxt(string file){ // efface le fichier arp
+		public void clearTxt(string file){ // efface les fichiers en paramêtre
 			process.StartInfo.Arguments= "/C del Infos\\"+file;
 			process.Start();
 			process.WaitForExit();
 		}
 		
-		public void arpTab(string res){ // efface le fichier arp
+		public void arpTab(string res){ // Récupère les données arp
 			process.StartInfo.Arguments= "/C arp -a | findstr \"MAC "+res+ ".\" | findstr /v Interface > Infos/arpTab.txt";
 			process.Start();
 			process.WaitForExit();

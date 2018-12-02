@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 
 namespace Main
@@ -74,6 +73,20 @@ namespace Main
 	        if(addr == "ip")
 	        	return ipRetour;
 	        return macRetour;
+		}
+		
+		public bool mailIsValid(string emailaddress)
+		{
+		    try
+		    {
+		        MailAddress m = new MailAddress(emailaddress);
+		
+		        return true;
+		    }
+		    catch (FormatException)
+		    {
+		        return false;
+		    }
 		}
 		
 		

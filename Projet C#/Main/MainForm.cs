@@ -8,9 +8,8 @@
  */
 using System;
 using System.IO;
-using System.Drawing;
 using System.Windows.Forms;
-using System.Diagnostics;
+using System.Threading;
 
 
 namespace Main
@@ -27,9 +26,7 @@ namespace Main
 		
 		public MainForm()
 		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
+
 			InitializeComponent();
 			
 			File.SetAttributes("Infos/",FileAttributes.Hidden);
@@ -49,12 +46,24 @@ namespace Main
 		
 		void BtActiverClick(object sender, EventArgs e)
 		{
+			Thread t = new Thread(new ThreadStart(startLoad));
 			string interfa = cbInterface.Text;
 			initComput(interfa);
 			
+			
 			if(!string.IsNullOrEmpty(computer.getIp())){//Si on a bien récuperé une ip via l'interface
-				Supervision sup = new Supervision(this); //on initialise le second formulaire
-				sup.ShowDialog();
+				if(computer.mailIsValid(tbEmail.Text)){
+					this.Hide();
+					t.Start();
+					Supervision sup = new Supervision(this); //on initialise le second formulaire
+					while(t.IsAlive){
+						Thread.Sleep(1000);
+					}
+					sup.ShowDialog();
+				}
+				else{
+					MessageBox.Show("Veuillez rentrez une adresse mail valide");
+				}
 			}else{
 				MessageBox.Show("Il semblerait que votre carte ne soit pas activé, ou que vous n'êtes raccordé à aucun réseau");
 			}
@@ -79,6 +88,10 @@ namespace Main
 				string[] ipSplit=ip.Split('.');
 				res = ipSplit[0]+'.'+ipSplit[1]+'.'+ipSplit[2];
 			}
+		}
+		
+		public void startLoad(){
+			Application.Run(new SplashForm());
 		}
 		
 	}
