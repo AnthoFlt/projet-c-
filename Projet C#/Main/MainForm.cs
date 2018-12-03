@@ -62,10 +62,10 @@ namespace Main
 					sup.ShowDialog();
 				}
 				else{
-					MessageBox.Show("Veuillez rentrez une adresse mail valide");
+					MessageBox.Show("Veuillez rentrer une adresse mail valide");
 				}
 			}else{
-				MessageBox.Show("Il semblerait que votre carte ne soit pas activé, ou que vous n'êtes raccordé à aucun réseau");
+				MessageBox.Show("Il semblerait que votre carte ne soit pas activée, ou que vous n'êtes raccordé à aucun réseau");
 			}
 		}
 		
