@@ -164,7 +164,7 @@ namespace Main
 			
 			var tempNb = new Label();
 			tempNb.Location = new Point(100,80);
-			tempNb.Text = "Nombre de machine présente sur le réseau : " + res;
+			tempNb.Text = "Nombre de machines présentes sur le réseau : " + res;
     			tempNb.Size = new Size(400,50);
     			tempNb.Font = new Font("default",10);
     			tempNb.Name = "nbReseau";
