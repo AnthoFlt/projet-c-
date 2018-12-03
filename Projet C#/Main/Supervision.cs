@@ -226,10 +226,16 @@ namespace Main
 		{
 			this.Close();
 			mainform.Close();
+			timer.Stop();
+			mappingT.Abort();
+			arpThread.Abort();
 		}
 		void SupervisionFormClosing(object sender, FormClosingEventArgs e)
 		{
 			mainform.Close();
+			timer.Stop();
+			mappingT.Abort();
+			arpThread.Abort();
 		}	
 	}
 }
