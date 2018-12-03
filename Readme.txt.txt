@@ -12,6 +12,7 @@ Plusieurs modules sont nécessaires au bon fonctionnement de l'application.
 
 Les setups de ces différents modules sont présent dans le répertoire installé.
 
+L'application doit être lancée en mode administrateur.
 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxVERSIONxxxxxxxxxxxxxxxxxxxx
