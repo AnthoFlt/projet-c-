@@ -225,6 +225,11 @@ namespace Main
 		void ArreterLaProtectionToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			this.Close();
+			mainform.Close();
+		}
+		void SupervisionFormClosing(object sender, FormClosingEventArgs e)
+		{
+			mainform.Close();
 		}	
 	}
 }

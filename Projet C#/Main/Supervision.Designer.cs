@@ -56,8 +56,8 @@ namespace Main
 			this.optionsToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-			this.menuStrip1.Size = new System.Drawing.Size(729, 24);
+			this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+			this.menuStrip1.Size = new System.Drawing.Size(1701, 45);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -68,39 +68,41 @@ namespace Main
 			this.toolStripSeparator1,
 			this.arreterLaProtectionToolStripMenuItem});
 			this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 22);
+			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(123, 41);
 			this.optionsToolStripMenuItem.Text = "Options";
 			// 
 			// afficherRapportsToolStripMenuItem
 			// 
 			this.afficherRapportsToolStripMenuItem.Name = "afficherRapportsToolStripMenuItem";
-			this.afficherRapportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.afficherRapportsToolStripMenuItem.Size = new System.Drawing.Size(363, 42);
 			this.afficherRapportsToolStripMenuItem.Text = "Afficher les rapports";
 			this.afficherRapportsToolStripMenuItem.Click += new System.EventHandler(this.AfficherRapportsToolStripMenuItemClick);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(360, 6);
 			// 
 			// arreterLaProtectionToolStripMenuItem
 			// 
 			this.arreterLaProtectionToolStripMenuItem.Name = "arreterLaProtectionToolStripMenuItem";
-			this.arreterLaProtectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.arreterLaProtectionToolStripMenuItem.Size = new System.Drawing.Size(363, 42);
 			this.arreterLaProtectionToolStripMenuItem.Text = "Arreter la protection";
 			this.arreterLaProtectionToolStripMenuItem.Click += new System.EventHandler(this.ArreterLaProtectionToolStripMenuItemClick);
 			// 
 			// Supervision
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
 			this.AutoSize = true;
-			this.ClientSize = new System.Drawing.Size(729, 381);
+			this.ClientSize = new System.Drawing.Size(1701, 850);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
+			this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
 			this.Name = "Supervision";
 			this.Text = "Supervision";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SupervisionFormClosing);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
