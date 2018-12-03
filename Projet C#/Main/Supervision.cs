@@ -27,6 +27,7 @@ namespace Main
 		Mapping mapping;
 		ArpSpoof arpspoof;
 		Thread arpThread; 
+		Thread mappingT; 
 		List<Control> controlToRemove = new List<Control>();
 		
 		
@@ -39,41 +40,65 @@ namespace Main
 			mapping = new Mapping(this.mainform.computer);
 			arpspoof = new ArpSpoof(this.mainform);
 			arpThread = new Thread(new ThreadStart(arpAnalyse));
+			mappingT = new Thread(new ThreadStart(mappingRes));
 			
 			arpThread.Start();
+			mappingT.Start();
 			
-			scanRes(this.mainform.res);
-			analyseMapping();
 			
-			while(arpThread.IsAlive){
+			while(arpThread.IsAlive || mappingT.IsAlive){
 				Thread.Sleep(1000);
 			}
 			
 			affichage(mapping.getLips(), mapping.getLmacs());
 			
 			timer.Interval = 10000;
+			timer.Tick += new EventHandler(arpThreadStart);
+			timer.Tick += new EventHandler(mappingThreadStart);
 			timer.Tick += new EventHandler(mappingTime);
-			timer.Tick += new EventHandler(arpThreaStart);
 			timer.Enabled=true;
        		timer.Start();
 			
 		}
 		
-		public void arpThreaStart(Object sender, EventArgs e){
+		public void arpThreadStart(Object sender, EventArgs e){
+			timer.Enabled=false;
 			if(!arpThread.IsAlive){
 				arpThread = new Thread(new ThreadStart(arpAnalyse));
 				arpThread.Start();
 			}
 		}
 		
+		
+		
+		public void mappingThreadStart(Object sender, EventArgs e){
+			if(!mappingT.IsAlive){
+				mappingT = new Thread(new ThreadStart(mappingRes));
+				mappingT.Start();
+			}
+		}
+		
+		
+		
 		public void arpAnalyse(){
 			arpspoof.getArp(mainform.res);
 			arpspoof.analyze();
 		}
 		
+		public void mappingRes(){
+			scanRes(this.mainform.res);
+			if(File.Exists("Infos/scan.txt")){
+				analyseMapping();
+			}else{
+				MessageBox.Show("Il semblerait qu'une erreur soit survenue durant le scan. Merci de réessayer.\nSi le problème persiste, merci de contacter les developeurs");
+				this.Close();
+			}
+		}
+		
 		public void scanRes(string res){
 			this.mainform.shell.scan(res);
 			this.mapping.formatScan(res);
+			
 		}
 		
 		public void analyseMapping(){
@@ -82,19 +107,10 @@ namespace Main
 		
 		
 		public void mappingTime(Object sender, EventArgs e){
-			timer.Enabled=false;
-			
-			scanRes(this.mainform.res);
-			if(File.Exists("Infos/scan.txt")){
-				analyseMapping();
-			}else{
-				MessageBox.Show("Il semblerait qu'une erreur soit survenue durant le scan. Merci de réessayer.\nSi le problème persiste, merci de contacter les developeurs");
-				this.Close();
+			while(arpThread.IsAlive || mappingT.IsAlive){
+				Thread.Sleep(2000);
 			}
-			while(arpThread.IsAlive){
-				Thread.Sleep(1000);
-			}
-			
+						
 			affichage(mapping.getLips(), mapping.getLmacs());
 			
 			timer.Enabled=true;
@@ -107,6 +123,7 @@ namespace Main
 			
 		public void affichage(Dictionary<int, string> Ips, Dictionary<int, string> Macs){
 			int res = Ips.Count()+1;
+			int count = Ips.Keys.Last();
 			
 			foreach(Control ctr in Controls){
 				if(ctr is Label){
@@ -132,27 +149,32 @@ namespace Main
 			int z = 165;
 			int nbligne=0;
 			
-			for(int i = 0; i<Ips.Count;i++){
-				var temp = new Label();
-				temp.Location = new Point(x,y);
-				temp.Text = "Ip : "+Ips[i];
-				temp.Name = Ips[i];
+			for(int i = 0; i<count;i++){
+				if(Ips.Keys.Contains(i)){
+					var temp = new Label();
+					temp.Location = new Point(x,y);
+				
+					temp.Text = "Ip : "+Ips[i];
+					temp.Name = Ips[i];
+				
 
-				Controls.Add(temp);	
+					Controls.Add(temp);	
+				}
 				
-				
-				var tempMac = new Label();
-				tempMac.Location = new Point(x,z);
-				tempMac.Text = "Mac : "+Macs[i];
-				
-				tempMac.Size = new Size(200,72);
-				tempMac.Font = new Font("defaut",7);
-				tempMac.Name = Macs[i];
+				if(Macs.Keys.Contains(i)){
+					var tempMac = new Label();
+					tempMac.Location = new Point(x,z);
+					tempMac.Text = "Mac : "+Macs[i];
 					
-			    Controls.Add(tempMac);
-				
-			    x+=200;
-			   	nbligne++;
+					tempMac.Size = new Size(200,72);
+					tempMac.Font = new Font("defaut",7);
+					tempMac.Name = Macs[i];
+						
+				    Controls.Add(tempMac);
+					
+				    x+=200;
+				   	nbligne++;
+				}
 			   	
 			   	if(nbligne==7){
 					y+= 100;
