@@ -90,7 +90,9 @@ namespace Main
 			if(File.Exists("Infos/scan.txt")){
 				analyseMapping();
 			}else{
-				MessageBox.Show("Il semblerait qu'une erreur soit survenue durant le scan. Merci de réessayer.\nSi le problème persiste, merci de contacter les developeurs");
+				MessageBox.Show("Il semblerait qu'une erreur soit survenue durant le scan. Merci de réessayer.\nSi le problème persiste, merci de contacter les developeurs" +
+				                "\n(L'application se fermera dans 10 secondes)");
+				Thread.Sleep(10000);
 				this.Close();
 			}
 		}
